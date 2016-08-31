@@ -76,8 +76,6 @@ class BloomView: UIView {
         praise.contents = UIImage(named: "ui_like")?.CGImage
         praise.contentsScale = 0.8
         praise.bounds = CGRectInset(bounds, 15, 15)
-        praise.borderWidth = 0.5
-        praise.borderColor = UIColor.redColor().CGColor
         
         layer.addSublayer(praise)
     }
