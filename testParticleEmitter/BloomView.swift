@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum CornerRect {
+enum CornerRect: Int {
     
     case LeftTop
     case Top
@@ -18,6 +18,11 @@ enum CornerRect {
     case Bottom
     case RightBottom
     case Right
+    
+    func configureCell(emitterCell : CAEmitterCell){
+        
+        
+    }
 }
 
 class BloomView: UIView {
@@ -75,7 +80,7 @@ class BloomView: UIView {
         praise.position = CGPointMake(bounds.size.width/2.0, bounds.size.height/2.0)
         praise.contents = UIImage(named: "ui_like")?.CGImage
         praise.contentsScale = 0.8
-        praise.bounds = CGRectInset(bounds, 15, 15)
+        praise.bounds = CGRectInset(bounds, bounds.size.width/6.0 + 5, bounds.size.height/6.0 + 5)
         
         layer.addSublayer(praise)
     }
@@ -83,11 +88,14 @@ class BloomView: UIView {
     func createCornerParticle(corner : CornerRect ) {
         
         let emitterCell = CAEmitterCell()
-        emitterCell.birthRate = 3
+        emitterCell.birthRate = 2
         emitterCell.lifetime = Float(duration)
-        emitterCell.contentsScale = 10
+        emitterCell.contentsScale = 10.0
         emitterCell.velocity = 5.0
-        emitterCell.velocityRange = 10.0
+        
+        emitterCell.emissionLongitude = CGFloat(M_PI_2)
+        emitterCell.emissionRange = CGFloat(M_PI)
+        //emitterCell.scaleRange = 2.0
         
         let emitterCellb = CAEmitterCell()
         emitterCellb.contents = UIImage.init(named: "Star")?.CGImage
@@ -96,10 +104,6 @@ class BloomView: UIView {
         emitterCellb.contentsScale = 6
 //        emitterCellb.velocity = 5.0
 //        emitterCellb.velocityRange = 10.0
-        
-        emitterCell.emissionRange = CGFloat(M_PI_2)
-        emitterCell.emissionRange = CGFloat(-M_PI_2)
-        emitterCell.scaleRange = 2.0
         
         let width = bounds.width/3.0
         let height = bounds.height/3.0
@@ -210,7 +214,6 @@ class BloomView: UIView {
             
             emitterCell1.color = UIColor.purpleColor().CGColor
         }
-        //emitterCell.emissionLongitude = CGFloat(M_PI_2)
         emitter.frame = rect
     }
     

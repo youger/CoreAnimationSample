@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         let rect = UIEdgeInsetsInsetRect(view.bounds, UIEdgeInsetsMake(topOrBottom, leftOrRight, topOrBottom, leftOrRight))
         
         bloom = BloomView.init(frame: rect)
-        //bloom?.duration = 5.0
+        bloom?.duration = 5.0
         view.addSubview(bloom!)
     }
 
