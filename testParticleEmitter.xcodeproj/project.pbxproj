@@ -15,6 +15,7 @@
 		E86599661D704C6800913264 /* testParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86599651D704C6800913264 /* testParticleEmitterTests.swift */; };
 		E86599711D704C6800913264 /* testParticleEmitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86599701D704C6800913264 /* testParticleEmitterUITests.swift */; };
 		E871ECB71D7522E600F99077 /* BloomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E871ECB61D7522E600F99077 /* BloomView.swift */; };
+		E871ECB91D792FD000F99077 /* BloomCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E871ECB81D792FD000F99077 /* BloomCorner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E86599701D704C6800913264 /* testParticleEmitterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testParticleEmitterUITests.swift; sourceTree = "<group>"; };
 		E86599721D704C6800913264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E871ECB61D7522E600F99077 /* BloomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloomView.swift; sourceTree = "<group>"; };
+		E871ECB81D792FD000F99077 /* BloomCorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloomCorner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				E86599591D704C6800913264 /* LaunchScreen.storyboard */,
 				E865995C1D704C6800913264 /* Info.plist */,
 				E871ECB61D7522E600F99077 /* BloomView.swift */,
+				E871ECB81D792FD000F99077 /* BloomCorner.swift */,
 			);
 			path = testParticleEmitter;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				E86599531D704C6800913264 /* ViewController.swift in Sources */,
 				E86599511D704C6800913264 /* AppDelegate.swift in Sources */,
+				E871ECB91D792FD000F99077 /* BloomCorner.swift in Sources */,
 				E871ECB71D7522E600F99077 /* BloomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

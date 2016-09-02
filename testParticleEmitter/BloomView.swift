@@ -8,22 +8,7 @@
 
 import UIKit
 
-enum CornerRect: Int {
-    
-    case LeftTop
-    case Top
-    case RightTop
-    case Left
-    case LeftBottom
-    case Bottom
-    case RightBottom
-    case Right
-    
-    func configureCell(emitterCell : CAEmitterCell){
-        
-        
-    }
-}
+//Nested Types
 
 class BloomView: UIView {
 
@@ -126,94 +111,16 @@ class BloomView: UIView {
     func configureParitcle(emitter : CAEmitterLayer, corner : CornerRect) {
         
         var rect = emitter.frame
-        let emitterCell1 = emitter.emitterCells![0]
+        let emitterCell = emitter.emitterCells![0]
     
-        switch corner {
+        emitterCell.contents = UIImage.init(named: corner.configure.content)?.CGImage
+        emitterCell.color = corner.configure.color
+        emitterCell.xAcceleration = corner.configure.acceleration.xAcceleration
+        emitterCell.yAcceleration = corner.configure.acceleration.yAcceleration
         
-        case .LeftTop:
-            
-            rect.origin = CGPointMake(0, 0)
-            emitterCell1.contents = UIImage.init(named: "dot-1")?.CGImage
-            emitterCell1.color = UIColor.greenColor().CGColor
-            
-            emitterCell1.xAcceleration = -20.0
-            emitterCell1.yAcceleration = -10.0
-            
-            emitter.emitterPosition = CGPointMake(rect.size.width*2/3.0, rect.size.height*2/3.0)
-           
-            emitterCell1.color = UIColor.redColor().CGColor
-            
-        case .Top:
-            
-            rect.origin = CGPointMake(bounds.width/3.0, 0)
-            emitterCell1.contents = UIImage.init(named: "dot-1-1")?.CGImage
-            emitterCell1.color = UIColor.greenColor().CGColor
-            
-            emitterCell1.yAcceleration = -10.0
-            
-            emitterCell1.color = UIColor.greenColor().CGColor
-            
-        case .RightTop:
-            
-            rect.origin = CGPointMake(bounds.width * 2/3.0, 0)
-            emitterCell1.contents = UIImage.init(named: "dot-2")?.CGImage
-            
-            emitterCell1.xAcceleration = 10.0
-            emitterCell1.yAcceleration = -10.0
-            emitter.emitterPosition = CGPointMake(rect.size.width/3.0, rect.size.height*2/3.0)
-            
-            emitterCell1.color = UIColor.blueColor().CGColor
-            
-        case .Left:
-            
-            rect.origin = CGPointMake(0, bounds.width/3.0)
-            emitterCell1.contents = UIImage.init(named: "dot-2-1")?.CGImage
-            
-            emitterCell1.xAcceleration = -20.0
-            
-            emitterCell1.color = UIColor.cyanColor().CGColor
-            
-        case .LeftBottom:
-            
-            rect.origin = CGPointMake(0, bounds.width * 2/3.0)
-            emitterCell1.contents = UIImage.init(named: "dot-3")?.CGImage
-            
-            emitterCell1.xAcceleration = -20.0
-            emitterCell1.yAcceleration = 10.0
-            emitter.emitterPosition = CGPointMake(rect.size.width*2/3.0, rect.size.height/3.0)
-            
-            emitterCell1.color = UIColor.yellowColor().CGColor
-            
-        case .Bottom:
-            
-            rect.origin = CGPointMake(bounds.width/3.0, bounds.width * 2/3.0)
-            emitterCell1.contents = UIImage.init(named: "dot-3-1")?.CGImage
-            
-            emitterCell1.yAcceleration = 10.0
-            
-            emitterCell1.color = UIColor.magentaColor().CGColor
-            
-        case .RightBottom:
-            
-            rect.origin = CGPointMake(bounds.width*2/3.0, bounds.height*2/3.0)
-            emitterCell1.contents = UIImage.init(named: "dot-4")?.CGImage
-            
-            emitterCell1.xAcceleration = 10.0
-            emitterCell1.yAcceleration = 10.0
-            
-            emitter.emitterPosition = CGPointMake(rect.size.width/3.0, rect.size.height/3.0)
-            
-            emitterCell1.color = UIColor.orangeColor().CGColor
-            
-        case .Right:
-            
-            rect.origin = CGPointMake(bounds.width*2/3.0, bounds.height/3.0)
-            emitterCell1.contents = UIImage.init(named: "dot-4-1")?.CGImage
-            
-            emitterCell1.xAcceleration = 10.0
-            
-            emitterCell1.color = UIColor.purpleColor().CGColor
-        }
+        rect.origin = CGPointMake(bounds.width * corner.configure.position.originX, bounds.height * corner.configure.position.originY)
+        emitter.emitterPosition = CGPointMake(rect.size.width * corner.configure.position.emitX, rect.size.height * corner.configure.position.emitY)
+        
         emitter.frame = rect
     }
     
