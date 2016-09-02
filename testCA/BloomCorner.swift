@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-enum CornerRect{
+//Nested Types
+public enum CornerRect{
     
     case LeftTop
     case Top

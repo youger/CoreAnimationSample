@@ -8,8 +8,6 @@
 
 import UIKit
 
-//Nested Types
-
 class BloomView: UIView {
 
     /*
@@ -21,7 +19,7 @@ class BloomView: UIView {
     */
     var emitterParticle : CALayer!
     var praise : CALayer!
-    var duration = 1.0
+    var duration = 0.8
 //    var target : AnyObject ?
 //    var action : Selector ?
     
@@ -84,7 +82,7 @@ class BloomView: UIView {
         
         let emitterCellb = CAEmitterCell()
         emitterCellb.contents = UIImage.init(named: "Star")?.CGImage
-        emitterCellb.birthRate = 3
+        emitterCellb.birthRate = 1
         emitterCellb.lifetime = Float(duration)
         emitterCellb.contentsScale = 6
 //        emitterCellb.velocity = 5.0
@@ -97,7 +95,7 @@ class BloomView: UIView {
         let emitter = CAEmitterLayer()
         emitter.frame = rect
         emitter.emitterSize = rect.size
-        emitter.lifetime = 1.0
+        emitter.lifetime = Float(duration)
         emitter.emitterShape = kCAEmitterLayerPoint
         emitter.emitterMode = kCAEmitterLayerSurface
         emitter.emitterCells = [emitterCell,emitterCellb]

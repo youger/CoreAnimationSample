@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E865994C1D704C6800913264"
-               BuildableName = "testParticleEmitter.app"
-               BlueprintName = "testParticleEmitter"
-               ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+               BuildableName = "testCA.app"
+               BlueprintName = "testCA"
+               ReferencedContainer = "container:testCA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E86599601D704C6800913264"
-               BuildableName = "testParticleEmitterTests.xctest"
-               BlueprintName = "testParticleEmitterTests"
-               ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+               BuildableName = "testCA.xctest"
+               BlueprintName = "testCATests"
+               ReferencedContainer = "container:testCA.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E865996B1D704C6800913264"
-               BuildableName = "testParticleEmitterUITests.xctest"
-               BlueprintName = "testParticleEmitterUITests"
-               ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+               BuildableName = "testCA.xctest"
+               BlueprintName = "testCAUITests"
+               ReferencedContainer = "container:testCA.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E865994C1D704C6800913264"
-            BuildableName = "testParticleEmitter.app"
-            BlueprintName = "testParticleEmitter"
-            ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+            BuildableName = "testCA.app"
+            BlueprintName = "testCA"
+            ReferencedContainer = "container:testCA.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E865994C1D704C6800913264"
-            BuildableName = "testParticleEmitter.app"
-            BlueprintName = "testParticleEmitter"
-            ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+            BuildableName = "testCA.app"
+            BlueprintName = "testCA"
+            ReferencedContainer = "container:testCA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E865994C1D704C6800913264"
-            BuildableName = "testParticleEmitter.app"
-            BlueprintName = "testParticleEmitter"
-            ReferencedContainer = "container:testParticleEmitter.xcodeproj">
+            BuildableName = "testCA.app"
+            BlueprintName = "testCA"
+            ReferencedContainer = "container:testCA.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
