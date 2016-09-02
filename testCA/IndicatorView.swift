@@ -13,7 +13,7 @@ public typealias IndicatorClosure = () -> Void
 
 class IndicatorView: UIView {
     
-    var progressLayer : CAShapeLayer?
+    private var progressLayer : CAShapeLayer?
     var duration = 1.0
     var doneClosure : IndicatorClosure?
     
@@ -65,6 +65,7 @@ class IndicatorView: UIView {
     func startAnimate() -> IndicatorView {
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0.0
         animation.toValue = 1.0
         animation.duration = duration
         animation.delegate = self
