@@ -109,11 +109,10 @@
 				E86599571D704C6800913264 /* Assets.xcassets */,
 				E86599591D704C6800913264 /* LaunchScreen.storyboard */,
 				E865995C1D704C6800913264 /* Info.plist */,
-				E871ECB61D7522E600F99077 /* BloomView.swift */,
 				E871ECB81D792FD000F99077 /* BloomCorner.swift */,
+				E871ECB61D7522E600F99077 /* BloomView.swift */,
 				E871ECBA1D79485600F99077 /* IndicatorView.swift */,
 			);
-			name = testCA;
 			path = testCA;
 			sourceTree = "<group>";
 		};
@@ -123,7 +122,6 @@
 				E86599651D704C6800913264 /* testParticleEmitterTests.swift */,
 				E86599671D704C6800913264 /* Info.plist */,
 			);
-			name = testCATests;
 			path = testCATests;
 			sourceTree = "<group>";
 		};
@@ -133,7 +131,6 @@
 				E86599701D704C6800913264 /* testParticleEmitterUITests.swift */,
 				E86599721D704C6800913264 /* Info.plist */,
 			);
-			name = testCAUITests;
 			path = testCAUITests;
 			sourceTree = "<group>";
 		};

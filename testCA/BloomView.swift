@@ -41,8 +41,8 @@ class BloomView: UIView {
     
     func configureSublayers() {
         
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.blackColor().CGColor
+        //layer.borderWidth = 0.5
+        //layer.borderColor = UIColor.blackColor().CGColor
         
         emitterParticle = CALayer()
         emitterParticle.frame = bounds
@@ -122,11 +122,6 @@ class BloomView: UIView {
         emitter.frame = rect
     }
     
-    func handleTapGesture() {
-        
-        startAnimate()
-    }
-    
     func startAnimate() {
         
         if userInteractionEnabled {
@@ -147,6 +142,11 @@ class BloomView: UIView {
             
             layer.addSublayer(emitterParticle)
         }
+    }
+    
+    func handleTapGesture() {
+        
+        startAnimate()
     }
     
     override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
