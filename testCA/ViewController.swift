@@ -17,9 +17,12 @@ class ViewController: UIViewController {
     
     var label : UILabel?
     
-    
-    var timeCount : Int = 10
-    
+    var timeCount : Int = 10{
+        
+        willSet{
+            label!.text = String(newValue)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +92,8 @@ class ViewController: UIViewController {
         
         guard timeCount > 0 else{
             
-            timer.invalidate()
-            activityIndicator?.stopAnimate()
+            //timer.invalidate()
+            //activityIndicator?.stopAnimate()
             timeCount = 10
 
             bloomAnimate(timer)
@@ -98,7 +101,6 @@ class ViewController: UIViewController {
             return
         }
         timeCount = timeCount - 1
-        label?.text = String(timeCount)
     }
     
     func sliderValueChanged(sender : UISlider) {

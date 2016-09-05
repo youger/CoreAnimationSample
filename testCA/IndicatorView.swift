@@ -17,18 +17,14 @@ class IndicatorView: UIView {
     var duration = 1.0
     var doneClosure : IndicatorClosure?
     
-    var progress : Float {
+    var progress : Float = 0.0 {
     
-        set(progress){
+        willSet{
         
-            progressLayer?.strokeEnd = CGFloat(progress)
+            progressLayer?.strokeEnd = CGFloat(newValue)
 //            if progress > 0.2 {
 //                progressLayer?.strokeStart = CGFloat(Double(progress) - 0.2)
 //            }
-        }
-        
-        get{
-            return self.progress
         }
     }
     
