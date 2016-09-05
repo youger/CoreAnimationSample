@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E85AB47B1D7D1BE200AE01CB /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85AB47A1D7D1BE200AE01CB /* ActivityIndicatorView.swift */; };
 		E86599511D704C6800913264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86599501D704C6800913264 /* AppDelegate.swift */; };
 		E86599531D704C6800913264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86599521D704C6800913264 /* ViewController.swift */; };
 		E86599561D704C6800913264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E86599541D704C6800913264 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E85AB47A1D7D1BE200AE01CB /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		E865994D1D704C6800913264 /* testCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86599501D704C6800913264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E86599521D704C6800913264 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				E871ECB81D792FD000F99077 /* BloomCorner.swift */,
 				E871ECB61D7522E600F99077 /* BloomView.swift */,
 				E871ECBA1D79485600F99077 /* IndicatorView.swift */,
+				E85AB47A1D7D1BE200AE01CB /* ActivityIndicatorView.swift */,
 			);
 			path = testCA;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				E86599531D704C6800913264 /* ViewController.swift in Sources */,
 				E86599511D704C6800913264 /* AppDelegate.swift in Sources */,
 				E871ECB91D792FD000F99077 /* BloomCorner.swift in Sources */,
+				E85AB47B1D7D1BE200AE01CB /* ActivityIndicatorView.swift in Sources */,
 				E871ECB71D7522E600F99077 /* BloomView.swift in Sources */,
 				E871ECBB1D79485600F99077 /* IndicatorView.swift in Sources */,
 			);
