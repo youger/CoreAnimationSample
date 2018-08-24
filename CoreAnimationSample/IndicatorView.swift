@@ -46,14 +46,14 @@ class IndicatorView: UIView {
         
         progressLayer = CAShapeLayer()
         progressLayer?.frame = bounds
-        progressLayer?.path = UIBezierPath(ovalInRect: bounds).CGPath
-        progressLayer?.fillColor = UIColor.clearColor().CGColor
-        progressLayer?.strokeColor = UIColor .redColor().CGColor
+        progressLayer?.path = UIBezierPath(ovalIn: bounds).cgPath
+        progressLayer?.fillColor = UIColor.clear.cgColor
+        progressLayer?.strokeColor = UIColor .red.cgColor
         progressLayer?.lineWidth = 2.0
         
 //        progressLayer?.strokeStart = 0.4
         progressLayer?.strokeEnd = 0.0
-        progressLayer?.setAffineTransform(CGAffineTransformMakeRotation(CGFloat(-M_PI_2)))
+        progressLayer?.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2)))
         
         layer.addSublayer(progressLayer!)
     }
@@ -64,14 +64,14 @@ class IndicatorView: UIView {
         animation.fromValue = 0.0
         animation.toValue = 1.0
         animation.duration = duration
-        animation.delegate = self
+        animation.delegate = self as? CAAnimationDelegate
         
-        progressLayer?.addAnimation(animation, forKey: nil)
+        progressLayer?.add(animation, forKey: nil)
         
         return self
     }
     
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         
         if (doneClosure != nil) {
             doneClosure!()

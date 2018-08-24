@@ -49,7 +49,7 @@ class BloomView: UIView {
         
         for corner in corners {
             
-            createCornerParticle(corner)
+            createCornerParticle(corner: corner)
         }
         createPraiseLayer()
         
@@ -60,10 +60,10 @@ class BloomView: UIView {
     func createPraiseLayer() {
         
         praise = CALayer()
-        praise.position = CGPointMake(bounds.size.width/2.0, bounds.size.height/2.0)
-        praise.contents = UIImage(named: "ui_like")?.CGImage
+        praise.position = CGPoint(x:bounds.size.width/2.0, y:bounds.size.height/2.0)
+        praise.contents = UIImage(named: "ui_like")?.cgImage
         praise.contentsScale = 0.8
-        praise.bounds = CGRectInset(bounds, bounds.size.width/6.0 + 5, bounds.size.height/6.0 + 5)
+        praise.bounds = bounds.insetBy(dx:bounds.size.width/6.0 + 5, dy:bounds.size.height/6.0 + 5)
         
         layer.addSublayer(praise)
     }
@@ -76,12 +76,12 @@ class BloomView: UIView {
         emitterCell.contentsScale = 10.0
         emitterCell.velocity = 5.0
         
-        emitterCell.emissionLongitude = CGFloat(M_PI_2)
-        emitterCell.emissionRange = CGFloat(M_PI)
+        emitterCell.emissionLongitude = CGFloat(Double.pi / 2)
+        emitterCell.emissionRange = CGFloat(Double.pi)
         //emitterCell.scaleRange = 2.0
         
         let emitterCellb = CAEmitterCell()
-        emitterCellb.contents = UIImage.init(named: "Star")?.CGImage
+        emitterCellb.contents = UIImage.init(named: "Star")?.cgImage
         emitterCellb.birthRate = 1
         emitterCellb.lifetime = Float(duration)
         emitterCellb.contentsScale = 6
@@ -90,7 +90,7 @@ class BloomView: UIView {
         
         let width = bounds.width/3.0
         let height = bounds.height/3.0
-        let rect = CGRectMake(0, 0, width, height)
+        let rect = CGRect(x:0, y:0,width: width, height: height)
         
         let emitter = CAEmitterLayer()
         emitter.frame = rect
@@ -99,9 +99,9 @@ class BloomView: UIView {
         emitter.emitterShape = kCAEmitterLayerPoint
         emitter.emitterMode = kCAEmitterLayerSurface
         emitter.emitterCells = [emitterCell,emitterCellb]
-        emitter.emitterPosition = CGPointMake(rect.size.width/2.0, rect.size.height/2.0)
+        emitter.emitterPosition = CGPoint(x:rect.size.width/2.0, y:rect.size.height/2.0)
         
-        configureParitcle(emitter, corner: corner)
+        configureParitcle(emitter: emitter, corner: corner)
         
         emitterParticle.addSublayer(emitter)
     }
@@ -111,47 +111,50 @@ class BloomView: UIView {
         var rect = emitter.frame
         let emitterCell = emitter.emitterCells![0]
     
-        emitterCell.contents = UIImage.init(named: corner.configure.content)?.CGImage
+        emitterCell.contents = UIImage.init(named: corner.configure.content)?.cgImage
         emitterCell.color = corner.configure.color
         emitterCell.xAcceleration = corner.configure.acceleration.xAcceleration
         emitterCell.yAcceleration = corner.configure.acceleration.yAcceleration
         
-        rect.origin = CGPointMake(bounds.width * corner.configure.position.originX, bounds.height * corner.configure.position.originY)
-        emitter.emitterPosition = CGPointMake(rect.size.width * corner.configure.position.emitX, rect.size.height * corner.configure.position.emitY)
+        rect.origin = CGPoint(x:bounds.width * corner.configure.position.originX, y:bounds.height * corner.configure.position.originY)
+        emitter.emitterPosition = CGPoint(x:rect.size.width * corner.configure.position.emitX, y:rect.size.height * corner.configure.position.emitY)
         
         emitter.frame = rect
     }
     
     func startAnimate() {
         
-        if userInteractionEnabled {
+        if isUserInteractionEnabled {
          
-            userInteractionEnabled = false
+            isUserInteractionEnabled = false
             
             let spring = CASpringAnimation(keyPath: "transform");
-            spring.fromValue = NSValue.init(CATransform3D:CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(0.2, 0.2)))
+            spring.fromValue = NSValue(caTransform3D:CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.2, y: 0.2)))
             //spring.toValue = NSValue.init(CATransform3D:CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(2, 2))) //view.bounds.height/2.0 - 100.0
             spring.damping = 8.0
             spring.initialVelocity = 10.0
             spring.stiffness = 200
             spring.duration = duration
             spring.delegate = self
-            praise.addAnimation(spring, forKey: nil)
+            praise.add(spring, forKey: nil)
             
-            spring.fromValue = NSValue.init(CATransform3D:CATransform3DMakeAffineTransform(CGAffineTransformMakeScale(0.8, 0.8)))
+            spring.fromValue = NSValue(caTransform3D:CATransform3DMakeAffineTransform(CGAffineTransform(scaleX: 0.8, y: 0.8)))
             
             layer.addSublayer(emitterParticle)
         }
     }
     
-    func handleTapGesture() {
+    @objc func handleTapGesture() {
         
         startAnimate()
     }
+}
+
+extension BloomView :CAAnimationDelegate{
     
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool){
         
         emitterParticle.removeFromSuperlayer()
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
     }
 }

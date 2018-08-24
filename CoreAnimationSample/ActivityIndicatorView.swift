@@ -22,16 +22,16 @@ class ActivityIndicatorView: UIView {
         return _isAnimating
     }
     
-    var tintColorA : UIColor? = UIColor.redColor(){
+    var tintColorA : UIColor? = UIColor.red{
         
         willSet{
-            arcLayerA?.strokeColor = newValue?.CGColor
+            arcLayerA?.strokeColor = newValue?.cgColor
         }
     }
-    var tintColorB : UIColor? = UIColor.lightGrayColor(){
+    var tintColorB : UIColor? = UIColor.lightGray{
         
         willSet(newTintColor){
-            arcLayerB?.strokeColor = newTintColor?.CGColor
+            arcLayerB?.strokeColor = newTintColor?.cgColor
         }
     }
     
@@ -61,9 +61,9 @@ class ActivityIndicatorView: UIView {
     func createArcLayer() -> CAShapeLayer {
         
         let arcLayer = CAShapeLayer()
-        arcLayer.fillColor = UIColor.clearColor().CGColor
+        arcLayer.fillColor = UIColor.clear.cgColor
         arcLayer.lineWidth = lineWidth
-        arcLayer.path = UIBezierPath(ovalInRect: bounds).CGPath
+        arcLayer.path = UIBezierPath(ovalIn: bounds).cgPath
         
         arcLayer.frame = bounds
         
@@ -73,11 +73,11 @@ class ActivityIndicatorView: UIView {
     func configureSublayers() {
         
         arcLayerA = createArcLayer()
-        arcLayerA?.strokeColor = tintColorA?.CGColor
+        arcLayerA?.strokeColor = tintColorA?.cgColor
         arcLayerA?.strokeStart = 0.75
     
         arcLayerB = createArcLayer()
-        arcLayerB?.strokeColor = tintColorB?.CGColor
+        arcLayerB?.strokeColor = tintColorB?.cgColor
         arcLayerB?.strokeStart = 0.25
         arcLayerB?.strokeEnd = 0.5
         
@@ -90,15 +90,15 @@ class ActivityIndicatorView: UIView {
         if _isAnimating { return }
         
         let animation = CABasicAnimation(keyPath: "transform.rotation")
-        animation.toValue = 2 * M_PI
+        animation.toValue = 2 * Double.pi
         animation.repeatCount = HUGE
         animation.duration = Double(speed)
         //animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        arcLayerA?.addAnimation(animation, forKey: nil)
+        arcLayerA?.add(animation, forKey: nil)
         
-        animation.toValue = -2*M_PI
-        arcLayerB?.addAnimation(animation, forKey: nil)
+        animation.toValue = -2*Double.pi
+        arcLayerB?.add(animation, forKey: nil)
         
         _isAnimating = true
     }

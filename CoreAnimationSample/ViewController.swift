@@ -28,16 +28,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let loadingButton = createButton("Loading", action: #selector(loadingAnimate))
-        loadingButton.center = CGPointMake(view.center.x / 2, view.bounds.height - 50)
+        let loadingButton = createButton(title: "Loading", action: #selector(loadingAnimate))
+        loadingButton.center = CGPoint(x: view.center.x / 2, y: view.bounds.height - 50)
         view.addSubview(loadingButton)
         
-        let animateButton = createButton("Bloom", action: #selector(bloomAnimate))
-        animateButton.center = CGPointMake(view.center.x * 3 / 2, view.bounds.height - 50)
+        let animateButton = createButton(title: "Bloom", action: #selector(bloomAnimate))
+        animateButton.center = CGPoint(x: view.center.x * 3 / 2, y: view.bounds.height - 50)
         view.addSubview(animateButton)
         
         let slider = UISlider(frame: CGRect(x: (view.bounds.width - 200) / 2.0, y: animateButton.frame.origin.y - 50, width: 200, height: 44))
-        slider.addTarget(self, action: #selector(sliderValueChanged), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         view.addSubview(slider)
         
         let leftOrRight = (view.bounds.width - 50)/2.0
@@ -48,17 +48,17 @@ class ViewController: UIViewController {
         //bloom?.duration = 5.0
         
         indicator = IndicatorView.init(frame: rect)
-        indicator?.userInteractionEnabled = false
+        indicator?.isUserInteractionEnabled = false
         
         rect.origin.y = rect.origin.y - 80
         activityIndicator = ActivityIndicatorView.init(frame: rect)
-        activityIndicator?.tintColorA = UIColor(colorLiteralRed: 255/255.0, green: 102/255.0, blue: 153/255.0, alpha: 1.0)
-        activityIndicator?.tintColorB = UIColor(colorLiteralRed: 240/255.0, green: 233/255.0, blue: 235/255.0, alpha: 1.0)
+        activityIndicator?.tintColorA = UIColor.init(red: 255/255.0, green: 102/255.0, blue: 153/255.0, alpha: 1.0)
+        activityIndicator?.tintColorB = UIColor.init(red: 240/255.0, green: 233/255.0, blue: 235/255.0, alpha: 1.0)
         activityIndicator?.speed = 1.0
         
         label = UILabel(frame: (activityIndicator?.bounds)!)
-        label!.textColor = UIColor(colorLiteralRed: 255/255.0, green: 102/255.0, blue: 153/255.0, alpha: 1.0)
-        label!.textAlignment = .Center
+        label!.textColor = UIColor.init(red: 255/255.0, green: 102/255.0, blue: 153/255.0, alpha: 1.0)
+        label!.textAlignment = .center
         label!.text = String(timeCount)
         activityIndicator?.contentView = label
         
@@ -67,18 +67,18 @@ class ViewController: UIViewController {
         view.addSubview(indicator!)
         view.addSubview(activityIndicator!)
         
-        loadingAnimate(self)
+        loadingAnimate(sender: self)
     }
     
     func createButton(title: String, action: Selector) -> UIButton {
         
-        let button = UIButton.init(type: .System)
-        button.layer.borderColor = UIColor.blueColor().CGColor
+        let button = UIButton.init(type: .system)
+        button.layer.borderColor = UIColor.blue.cgColor
         button.layer.borderWidth = 0.5
-        button.setTitle(title, forState: .Normal)
-        button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
+        button.setTitle(title, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
 
-        button.frame = CGRectMake(0, 0, 100.0, 44.0)
+        button.frame = CGRect(origin: CGPoint.zero, size: CGSize.init(width: 100.0, height: 44.0))
         
         return button
     }
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func ticktack(timer : NSTimer) {
+    @objc func ticktack(timer : Timer) {
         
         guard timeCount > 0 else{
             
@@ -96,14 +96,14 @@ class ViewController: UIViewController {
             //activityIndicator?.stopAnimate()
             timeCount = 10
 
-            bloomAnimate(timer)
+            bloomAnimate(sender: timer)
             
             return
         }
         timeCount = timeCount - 1
     }
     
-    func sliderValueChanged(sender : UISlider) {
+    @objc func sliderValueChanged(sender : UISlider) {
         
         indicator?.progress = sender.value
         if sender.value == 1.0 {
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func loadingAnimate(sender : AnyObject) {
+    @objc func loadingAnimate(sender : AnyObject) {
         
         if activityIndicator?.superview == nil{
             
@@ -119,12 +119,12 @@ class ViewController: UIViewController {
         }
         
         activityIndicator?.startAnimate()
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ticktack), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ticktack), userInfo: nil, repeats: true)
         
         return
     }
     
-    func bloomAnimate(sender : AnyObject) {
+    @objc func bloomAnimate(sender : AnyObject) {
         
         indicator?.startAnimate().doneClosure = {
             
